@@ -56,7 +56,7 @@ export function useGeolocation() {
                     break;
 
                 default:
-                    errorMessage = " An unknoen error occurerd."     
+                    errorMessage = " An unknown error occurerd."     
             }
 
             setLocationData({

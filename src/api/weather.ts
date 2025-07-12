@@ -37,7 +37,7 @@ class WeatherAPI {
         return this.fetchData<WeatherData>(url);
     }
 
-    async getForcast({lat, lon}: Coordinates): Promise<ForecastData> {
+    async getForecast({lat, lon}: Coordinates): Promise<ForecastData> {
 
         const url = this.createUrl(`${API_CONFIG.BASE_URL}/forecast`,{
             lat: lat.toString(),
@@ -47,6 +47,7 @@ class WeatherAPI {
 
         return this.fetchData<ForecastData>(url);
     }
+    
     async reverseGeo({lat , lon}: Coordinates): Promise<GeocodingResponse[]>
     {
         const url = this.createUrl(`${API_CONFIG.GEO}/reverse`,{

@@ -2,7 +2,8 @@ import WeatherSkeleton from "@/components/loading-skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { useGeolocation } from "@/hooks/use-geolocation";
-import { AlertCircle, AlertTriangle, MapPin, RefreshCw } from "lucide-react";
+import { useReverseGeocastQuery } from "@/hooks/use-weather";
+import { AlertTriangle, MapPin, RefreshCw } from "lucide-react";
 import React from "react";
 
 const DashboardPage = () =>
@@ -13,6 +14,10 @@ const DashboardPage = () =>
         getLocation, 
         isLoading: locationLoading,
     } = useGeolocation();
+
+
+    const locationQuery = useReverseGeocastQuery(coordinates);
+    console.log(locationQuery);
     
     const handleRefresh= () => {
         getLocation()
@@ -30,7 +35,7 @@ const DashboardPage = () =>
         return(<Alert variant="destructive">
             <AlertTriangle className="h-4 w-4" />
             <AlertTitle> Location Error </AlertTitle>
-            <AlertDescription>
+            <AlertDescription className="flex flex-col gap-4">
                 <p>{locationError}</p>
                 <Button onClick={getLocation} variant={"outline"} className="w-fit">
                     <MapPin className="mr-2 h-4 w-4"/>
@@ -40,6 +45,22 @@ const DashboardPage = () =>
         </Alert>
         );
     }
+
+    if(!coordinates){
+        return(<Alert variant="destructive">
+            <AlertTriangle className="h-4 w-4" />
+            <AlertTitle> Location Required </AlertTitle>
+            <AlertDescription className="flex flex-col gap-4">
+                <p> Please enable location access to see your local weather</p>
+                <Button onClick={getLocation} variant={"outline"} className="w-fit">
+                    <MapPin className="mr-2 h-4 w-4"/>
+                    Enable Location
+                </Button>
+            </AlertDescription>
+        </Alert>
+        );
+    }
+
 
     return (
     <div className="space-y-4">
