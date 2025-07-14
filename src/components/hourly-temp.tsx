@@ -17,12 +17,14 @@ interface ChartData {
 
 const HourlyTemp = ({data}:HourlyTempProps) => {
 
-const chartData: ChartData[] = data.list
-    .slice(0, 8) // Get next 24 hours (3-hour intervals)
-    .map((item) => ({
-      time: format(new Date(item.dt * 1000), "ha"),
-      temp: Math.round(item.main.temp),
-      feels_like: Math.round(item.main.feels_like),
+    
+
+    const chartData: ChartData[] = data.list
+        .slice(0, 8) // Get next 24 hours (3-hour intervals)
+        .map((item) => ({
+        time: format(new Date(item.dt * 1000), "ha"),
+        temp: Math.round(item.main.temp),
+        feels_like: Math.round(item.main.feels_like),
     }));
 
     return (
@@ -35,6 +37,10 @@ const chartData: ChartData[] = data.list
                 <div className="h-[200px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={chartData}>
+
+
+
+
                     <XAxis
                         dataKey="time"
                         stroke="#888888"
@@ -78,6 +84,9 @@ const chartData: ChartData[] = data.list
                         return null;
                         }}
                     />
+
+                    
+
                     <Line
                         type="monotone"
                         dataKey="temp"
