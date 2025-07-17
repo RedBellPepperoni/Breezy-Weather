@@ -43,6 +43,7 @@ class WeatherAPI {
             lat: lat.toString(),
             lon: lon.toString(),
             units: API_CONFIG.DEFAULT_PARAMS.units,
+
         });
 
         return this.fetchData<ForecastData>(url);
@@ -54,6 +55,16 @@ class WeatherAPI {
             lat: lat.toString(),
             lon: lon.toString(),
             limit:1,
+        });
+
+        return this.fetchData<GeocodingResponse[]>(url);
+    }
+
+     async searchLocations(query: string): Promise<GeocodingResponse[]>
+    {
+        const url = this.createUrl(`${API_CONFIG.GEO}/direct`,{
+            q: query,
+            limit: "5",
         });
 
         return this.fetchData<GeocodingResponse[]>(url);

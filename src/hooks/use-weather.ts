@@ -1,11 +1,13 @@
 import  type {Coordinates} from "@/api/types"
 import { weatherAPI } from "@/api/weather";
 import { useQuery } from "@tanstack/react-query"
+import type { Search } from "lucide-react";
 
 export const WEATHER_KEYS={
     weather:(coordinates: Coordinates) =>["weather", coordinates] as const,
     forecast:(coordinates: Coordinates) =>["forecast", coordinates] as const,
     location:(coordinates: Coordinates) =>["location", coordinates] as const,
+    search:(query: string) =>["location-search", query] as const,
 } as const;
 
 export function useWeatherQuery(coordinates: Coordinates | null) {
@@ -35,5 +37,14 @@ export function useReverseGeocastQuery(coordinates: Coordinates | null) {
                     queryFn:()=> 
                         coordinates?weatherAPI.reverseGeo(coordinates) : null,
                     enabled: !!coordinates,
+    });
+}
+
+export function useLocationSearch(query: string) {
+    return useQuery({
+                    queryKey: WEATHER_KEYS.search(query),
+
+                    queryFn:()=> weatherAPI.searchLocations(query),
+                    enabled: query.length >3,
     });
 }

@@ -16,6 +16,10 @@ const CurrentWeather = ({data, locationName} : CurrentWeatherProps) => {
         wind: {speed}
     } = data;
 
+    const getWindSpeed_KMPH = (wind_ms : number) => {
+        return (wind_ms * 3.6).toFixed(2);
+    }
+
     return(
         <Card className="overflow-hidden">
             <CardContent className="p-6">
@@ -65,7 +69,7 @@ const CurrentWeather = ({data, locationName} : CurrentWeatherProps) => {
                                 <Wind className="h-4 w-4 text-blue-500"/>
                                 <div className="space-y-0.5">
                                     <p className="text-sm font-medium">Wind Speed</p>
-                                    <p className="text-sm text-muted-foreground">{speed} m/s</p>
+                                    <p className="text-sm text-muted-foreground">{getWindSpeed_KMPH(speed)} km/h</p>
                                 </div>
                             </div>
                         </div>
