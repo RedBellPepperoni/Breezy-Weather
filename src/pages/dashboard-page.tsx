@@ -3,8 +3,8 @@ import HourlyTemp from "@/components/hourly-temp"
 import WeatherSkeleton from "@/components/loading-skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import WeatherDetails from "@/components/weather-details";
-import WeatherForecast from "@/components/weather-forecast";
+import { WeatherDetails } from "@/components/weather-details";
+import {WeatherForecast} from "@/components/weather-forecast";
 import { useGeolocation } from "@/hooks/use-geolocation";
 import { useForecastQuery, useReverseGeocastQuery, useWeatherQuery } from "@/hooks/use-weather";
 import { AlertTriangle, MapPin, RefreshCw } from "lucide-react";

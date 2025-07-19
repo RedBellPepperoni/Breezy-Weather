@@ -23,7 +23,7 @@ interface DailyForecast {
     };
 }
 
-const WeatherForecast = ({data}: WeatherForecastProps) => {
+export const WeatherForecast = ({data}: WeatherForecastProps) => {
     
     const formatTemp = (temp: number) => `${Math.round(temp)}°`;
 
@@ -105,4 +105,3 @@ const WeatherForecast = ({data}: WeatherForecastProps) => {
 }
 
 
-export default WeatherForecast;

@@ -1,7 +1,7 @@
 import  type {Coordinates} from "@/api/types"
 import { weatherAPI } from "@/api/weather";
 import { useQuery } from "@tanstack/react-query"
-import type { Search } from "lucide-react";
+
 
 export const WEATHER_KEYS={
     weather:(coordinates: Coordinates) =>["weather", coordinates] as const,

@@ -8,7 +8,7 @@ interface WeatherDetailsProps {
     data: WeatherData;
 }
 
-const WeatherDetails = ({data}:WeatherDetailsProps) => {
+export const WeatherDetails = ({data}:WeatherDetailsProps) => {
     
     const {wind, main, sys} = data;
 
@@ -79,5 +79,3 @@ const WeatherDetails = ({data}:WeatherDetailsProps) => {
     );
 }
 
-
-export default WeatherDetails;
