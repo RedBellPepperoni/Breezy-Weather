@@ -1,4 +1,5 @@
 import CurrentWeather from "@/components/current-weather";
+import { FavoriteCities } from "@/components/favorite-cities";
 import HourlyTemp from "@/components/hourly-temp"
 import WeatherSkeleton from "@/components/loading-skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -91,7 +92,9 @@ const DashboardPage = () =>
 
     return (
     <div className="space-y-4">
-        {/** Favorite Cities */}
+       
+        <FavoriteCities/>
+
         <div className="flex items-center justify-between">
            <h1 className="text-x1 font-bold tracking-tight"> My Location </h1>
            <Button variant={'outline'}
