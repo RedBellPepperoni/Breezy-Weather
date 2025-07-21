@@ -1,8 +1,8 @@
 import type { ForecastData } from "@/api/types";
 import { format } from "date-fns";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Arrow } from "@radix-ui/react-tooltip";
-import { ArrowDown, ArrowUp, Droplet, Droplets, Wind } from "lucide-react";
+
+import { ArrowDown, ArrowUp, Droplets, Wind } from "lucide-react";
 
 
 interface WeatherForecastProps {

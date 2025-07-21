@@ -2,7 +2,7 @@ import { CommandDialog, CommandGroup, CommandInput, CommandItem, CommandSeparato
 import { Button } from "./ui/button";
 import { CommandEmpty, CommandList } from "./ui/command";
 import { useState } from "react";
-import { Clock, Loader, Loader2, Search, Star, XCircle } from "lucide-react";
+import { Clock, Loader2, Search, Star, XCircle } from "lucide-react";
 import { useLocationSearch } from "@/hooks/use-weather";
 import { useNavigate } from "react-router-dom";
 import { useSearchHistory } from "@/hooks/use-search-history";
