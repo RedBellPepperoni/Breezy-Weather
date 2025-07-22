@@ -10,7 +10,7 @@ interface WeatherDetailsProps {
 
 export const WeatherDetails = ({data}:WeatherDetailsProps) => {
     
-    const {wind, main, sys} = data;
+    const {wind, main, sys, timezone} = data;
 
     const getWindDirection = (degree:number ) =>{
         const directions = ["N", "NE", "E", "SE","S", "SW","W", "NW"];
@@ -19,20 +19,43 @@ export const WeatherDetails = ({data}:WeatherDetailsProps) => {
         return directions[index];
     }
 
-    const formatTime = (timestamp : number) => {
-        return format(new Date(timestamp * 1000),"h:mm a");
-    }
+    // const formatTime = (timestamp : number) => {
+    //     return format(new Date(timestamp * 1000),"h:mm a");
+    // }
+
+    function formatLocalTime(utcSeconds: number, timezoneOffsetSeconds: number): string {
+       
+        const utcMillis = utcSeconds * 1000;
+
+        const localMillis = utcMillis + timezoneOffsetSeconds * 1000;
+
+        const localDate = new Date(localMillis);
+     
+        let hours = localDate.getUTCHours();
+        const minutes = localDate.getUTCMinutes();
+
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+
+        hours = hours % 12;
+        hours = hours === 0 ? 12 : hours;
+
+        const minutesStr = minutes < 10 ? '0' + minutes : minutes;
+
+        return `${hours}:${minutesStr} ${ampm}`;
+        }
+
+        
 
     const details = [
         {
             title: "Sunrise",
-            value: formatTime(sys.sunrise),
+            value: formatLocalTime(sys.sunrise, timezone),
             icon: Sunrise,
             color: "text-orange-500",
         },
         {
             title: "Sunset",
-            value: formatTime(sys.sunset),
+            value: formatLocalTime(sys.sunset, timezone),
             icon: Sunset,
             color: "text-blue-500",
         },

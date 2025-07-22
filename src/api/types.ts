@@ -35,7 +35,7 @@ export interface WeatherData
         sunset: number;
         country: string;
     };
-
+    timezone: number;
     name: string;
     dt: number;
     
